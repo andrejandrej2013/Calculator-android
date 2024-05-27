@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.myapplication.Screen
 import kotlin.random.Random
 
 @Composable
@@ -39,12 +38,6 @@ fun GameScreen(navController: NavController) {
             Text("Submit")
         }
         Text(feedback)
-        Button(onClick = { navController.navigate(Screen.Calculator.route) }) {
-            Text("Calculator")
-        }
-        Button(onClick = { navController.navigate(Screen.History.route) }) {
-            Text("History")
-        }
     }
 }
 

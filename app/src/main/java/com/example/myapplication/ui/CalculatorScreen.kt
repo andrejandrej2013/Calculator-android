@@ -11,9 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.myapplication.Screen
-import com.example.myapplication.database.CalculationViewModel
 import com.example.myapplication.database.Calculation
+import com.example.myapplication.database.CalculationViewModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -43,16 +42,9 @@ fun CalculatorScreen(navController: NavController, viewModel: CalculationViewMod
             Text("Calculate")
         }
         Text("Result: $result")
-        Button(onClick = { navController.navigate(Screen.History.route) }) {
-            Text("History")
-        }
-        Button(onClick = { navController.navigate(Screen.Game.route) }) {
-            Text("Game")
-        }
     }
 }
 
-// Simple evaluation function for mathematical expressions
 fun eval(expr: String): Double {
     return object : Any() {
         var pos = -1
