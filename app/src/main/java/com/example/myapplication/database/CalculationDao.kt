@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CalculationDao {
-    @Query("SELECT * FROM calculation ORDER BY id ASC")
+        @Query("SELECT * FROM calculation ORDER BY id DESC")
     fun getAllCalculations(): Flow<List<Calculation>>
 
     @Insert

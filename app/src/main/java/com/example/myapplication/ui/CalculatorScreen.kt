@@ -1,15 +1,18 @@
 package com.example.myapplication.ui
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.myapplication.database.Calculation
 import com.example.myapplication.database.CalculationViewModel
@@ -21,12 +24,22 @@ fun CalculatorScreen(navController: NavController, viewModel: CalculationViewMod
     var expression by remember { mutableStateOf(TextFieldValue("")) }
     var result by remember { mutableStateOf("") }
 
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         BasicTextField(
             value = expression,
             onValueChange = { expression = it },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
+                .padding(16.dp),
+            textStyle = TextStyle(fontSize = 18.sp, color = Color.Black)
         )
+        Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
             try {
                 val calculationResult = eval(expression.text).toString()
@@ -41,7 +54,16 @@ fun CalculatorScreen(navController: NavController, viewModel: CalculationViewMod
         }) {
             Text("Calculate")
         }
-        Text("Result: $result")
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = "Result:",
+            style = TextStyle(fontSize = 18.sp, color = Color.Gray)
+        )
+        Text(
+            text = result,
+            style = TextStyle(fontSize = 24.sp, color = Color.Black),
+            modifier = Modifier.padding(8.dp)
+        )
     }
 }
 
